@@ -4,12 +4,12 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
+/*
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Todo>
  */
 class TodoFactory extends Factory
 {
-    /**
+    /*
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -19,7 +19,8 @@ class TodoFactory extends Factory
         return [
             'user_id' => rand(1, 100),
             'tittle' => ucwords(fake()->sentence()),
-            'is_complete' => rand(0, 1)
+            'is_complete' => rand(0, 1),
+            'category_id' => rand(1,100),
         ];
     }
 }
