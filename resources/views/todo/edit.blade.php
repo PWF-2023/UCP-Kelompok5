@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Todo') }}
+            {{ ('Todo') }}
         </h2>
     </x-slot>
 
@@ -13,13 +13,25 @@
                         @csrf
                         @method('patch')
                         <div class="mb-6">
-                            <x-input-label for="tittle" :value="__('Tittle')" />
+                            <x-input-label for="tittle" :value="('Tittle')" />
                             <x-text-input id="tittle" name="tittle" type="text" class="mt-1 block w-full"
-                                :value="old('name', $todo->tittle)" required autofocus autocomplete="tittle" />
+                                :value="old('tittle', $todo->tittle)" required autofocus autocomplete="tittle" />
                             <x-input-error class="mt-2" :messages="$errors->get('tittle')" />
                         </div>
+                        <div class="mb-6">
+                            <x-input-label for="category" :value="('Category')" />
+                            <x-select id="category" name="category_id" class="block w-full mt-1">
+                                <option value=""> Select Category </option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        @if ($todo->category_id === $category->id) selected @endif>{{ $category->tittle }}
+                                    </option>
+                                @endforeach
+                            </x-select>
+                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
+                        </div>
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <x-primary-button>{{ ('Save') }}</x-primary-button>
                             <x-cancel-button href="{{ route('todo.index') }}" />
                         </div>
                     </form>
