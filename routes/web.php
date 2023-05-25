@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    route::resource('todo', TodoController::class)->except(['show']);
+    Route::resource('todo', TodoController::class)->except(['show']);
     
     // Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
     // Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
@@ -38,6 +39,14 @@ Route::middleware('auth')->group(function () {
     // Route::get('/todo/{todo}/edit', [TodoController::class, 'edit'])->name('todo.edit');
     // Route::patch('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
     
+    // /Route::resource('category', CategoryController::class)->except(['show']);
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::patch('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
     Route::patch('/todo/{todo}/complete', [TodoController::class, 'complete'])->name('todo.complete');
     Route::patch('/todo/{todo}/incomplete', [TodoController::class, 'uncomplete'])->name('todo.uncomplete');
     
