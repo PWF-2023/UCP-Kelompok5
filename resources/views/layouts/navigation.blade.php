@@ -13,16 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ ('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.index')">
-                        {{ __('Todo') }}
+                        {{ ('Todo') }}
                     </x-nav-link>
                     @can('admin')
                     <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        {{ __('User') }}
-                    </x-nav-link>
+                        {{ ('User') }}
+                    </x-nav-link>
                     @endcan
+                    <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
+                        {{ ('Category') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -43,7 +46,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ ('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -53,14 +56,13 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ ('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
             </div>
-
-            <!-- Hamburger -->
+<!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -76,16 +78,19 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ ('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.index')">
-                {{ __('Todo') }}
+                {{ ('Todo') }}
             </x-responsive-nav-link>
             @can('admin')
             <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                {{ __('User') }}
+                {{ ('User') }}
             </x-responsive-nav-link>
             @endcan
+            <x-responsive-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
+                {{ ('Category') }}
+            </x-responsive-nav-link>
 
         </div>
 
@@ -98,7 +103,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ ('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -108,7 +113,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ ('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
