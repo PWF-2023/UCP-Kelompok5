@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Todo') }}
+            {{ ('Todo') }}
         </h2>
     </x-slot>
 
@@ -13,13 +13,25 @@
                         @csrf
                         @method('post')
                         <div class="mb-6">
-                            <x-input-label for="tittle" :value="__('Title')" />
+                            <x-input-label for="tittle" :value="('Title')" />
                             <x-text-input id="tittle" name="tittle" type="text" class="block w-full mt-1" required
                                 autofocus autocomplete="tittle" />
                             <x-input-error class="mt-2" :messages="$errors->get('tittle')" />
                         </div>
+
+                        <div class="mb-6">
+                            <x-input-label for="category" :value="('Category')" />
+                            <x-select id="category" name="category_id" class="block w-full mt-1">
+                                <option value="">Empty</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->tittle }}</option>
+                                @endforeach
+                            </x-select>
+                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
+                        </div>
+
                         <div class="flex items-center gap-4">
-                            <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            <x-primary-button>{{ ('Save') }}</x-primary-button>
                             <a href="{{ route('todo.index') }}"
                                 class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest
                                             text-gray-700 uppercase transition duration-150 ease-in-out
